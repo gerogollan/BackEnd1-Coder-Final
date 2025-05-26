@@ -5,6 +5,8 @@ import ProductModel from "../models/product.model.js";
 
 const router = Router();
 
+
+
 router.get("/", async (req, res) => {
   try {
     const { page = 1, limit = 10, sort, query } = req.query;
