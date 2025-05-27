@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 
 
 mongoose.connect('mongodb+srv://gerogollan123:gerogollan123@cluster0.soppn4w.mongodb.net/mi_base?retryWrites=true&w=majority')
-  .then(() => console.log('Conectado a MongoDB'))
+  .then(() => console.log('Conectado a MongoDB' , mongoose.connection.name))
   .catch(err => console.error('Error conectando a Mongo', err))
 
 //middleware
@@ -47,6 +47,7 @@ app.use(express.static("public")); //para psoder usar archivos estaticos como cs
 app.use("/api/products", productsRouter); // /api/products
 app.use("/api/carts", cartsRouter); ///api/carts
 app.use("/", viewRouter) // "/" home y "/realtimeproducts" para realtimeproducts
+
 
 
 app.listen(PORT, () => {
