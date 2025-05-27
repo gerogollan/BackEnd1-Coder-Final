@@ -118,19 +118,26 @@ Vaciar completamente el carrito.
 🏠 /products - Vista principal de productos
 Muestra todos los productos con paginación, ordenamiento y filtros.
 🔎 ¡Ideal para navegar por el catálogo!
+  
+📸 ![image](https://github.com/user-attachments/assets/20326fc7-41b6-466a-864e-12c97ea1cd30)
 
-📸
 
 🛍️ /products/:pid - Detalle de producto
 Muestra información completa del producto seleccionado y permite agregarlo al carrito.
 ✨ ¡Perfecto para ver los detalles antes de comprar!
 
-📸 ![image](https://github.com/user-attachments/assets/51214d60-a28a-461c-851d-3703304a5360)
 
 
-🛒 /carts/:cid - Vista de carrito
+📸 ![image](https://github.com/user-attachments/assets/44c65a18-38d5-4c39-a3f1-4ee903d1a898) 
+
+
+🛒 /carts/:cid - Vista de carrito 
 Muestra todos los productos agregados por un usuario en su carrito.
 🔧 Incluye botones para sumar, restar y eliminar productos.
+
+
+📸 ![image](https://github.com/user-attachments/assets/51214d60-a28a-461c-851d-3703304a5360)
+
 
      http://localhost:8080/carts/68351493525fa919906781f3
 📸 ![image](https://github.com/user-attachments/assets/76208253-d0c9-4e22-adcf-72279cb4e688)
