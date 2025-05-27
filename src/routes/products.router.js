@@ -1,28 +1,57 @@
-
 import { Router } from "express";
+import ProductModel from "../models/product.model.js";
 import ProductManager from "../managers/productManager.js";
-import ProductModel from "../models/product.model.js"; // Asegurate de importar esto si no lo tenías
 
 const router = Router();
 const productManager = new ProductManager();
 
-// Ruta GET con paginación y filtros
 router.get("/", async (req, res) => {
   try {
-    const { limit, page, sort, query } = req.query;
-    const products = await productManager.getProducts({ limit, page, sort, query });
+    const limit = parseInt(req.query.limit) || 10;
+    const page = parseInt(req.query.page) || 1;
+    const sort = req.query.sort === "asc" ? 1 : req.query.sort === "desc" ? -1 : null;
+    const query = req.query.query || null; 
 
-    res.render("home", {
-      products: products.docs,
-      hasPrevPage: products.hasPrevPage,
-      hasNextPage: products.hasNextPage,
-      prevPage: products.prevPage,
-      nextPage: products.nextPage,
-      page: products.page,
+    let filter = {};
+    if (query) {
+      if (query === "true" || query === "false") {
+        filter.status = query === "true"; 
+      } else {
+        filter.category = query; 
+      }
+    }
+
+    const options = {
+      page,
+      limit,
+      lean: true,
+    };
+
+    if (sort) {
+      options.sort = { price: sort };
+    }
+
+    const result = await ProductModel.paginate(filter, options);
+
+    const baseUrl = `${req.protocol}://${req.get("host")}${req.baseUrl}${req.path}`;
+    const makeLink = (pageNum) =>
+      `${baseUrl}?limit=${limit}&page=${pageNum}${sort ? `&sort=${req.query.sort}` : ""}${query ? `&query=${query}` : ""}`;
+
+    res.json({
+      status: "success",
+      payload: result.docs,
+      totalPages: result.totalPages,
+      prevPage: result.hasPrevPage ? result.prevPage : null,
+      nextPage: result.hasNextPage ? result.nextPage : null,
+      page: result.page,
+      hasPrevPage: result.hasPrevPage,
+      hasNextPage: result.hasNextPage,
+      prevLink: result.hasPrevPage ? makeLink(result.prevPage) : null,
+      nextLink: result.hasNextPage ? makeLink(result.nextPage) : null,
     });
-    // res.json(products)
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener productos" });
+    console.error("Error en GET /api/products:", error);
+    res.status(500).json({ status: "error", error: "Error al obtener productos" });
   }
 });
 
@@ -59,7 +88,5 @@ router.delete("/:pid", async (req, res) => {
   }
 });
 
+
 export default router;
-
-
-

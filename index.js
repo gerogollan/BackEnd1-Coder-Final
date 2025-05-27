@@ -33,8 +33,9 @@ app.engine('handlebars', exphbs.engine({
   }
 }));
 
-app.set("views", path.join(__dirname, "/src/views"));
+
 app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "/src/views"));
 app.use(express.static("public")); //para psoder usar archivos estaticos como css, js, img, etc
 
 

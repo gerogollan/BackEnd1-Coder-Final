@@ -18,7 +18,7 @@
   <ul>
        
 
-       <form id="sortForm" method="POST" action="/api/products" style="margin-bottom: 20px;">
+       <form id="sortForm" method="GET" action="/" style="margin-bottom: 20px;">
   <label for="sort">Ordenar por precio:</label>
   <select name="sort" id="sort" onchange="this.form.submit()">
     <option value="">-- Seleccionar --</option>
@@ -45,7 +45,7 @@
         <p>${{price}}</p>
         <p>{{description}}</p>
       </li>
-      <hr>
+      
     {{/each}}
   </ul>
 

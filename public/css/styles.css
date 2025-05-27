@@ -1,8 +1,15 @@
 *{
-    font-family: monospace;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
 }
 
+
+header{
+  margin-bottom:20px ;
+}
 #form {
+  padding-top: 15px;
     display: grid;
     align-content: center;
     justify-content: center;
@@ -22,14 +29,11 @@
     
   }
  
-  form input[type="checkbox"] {
-    accent-color: #ff00001f;
-  }
+  
   
   form button {
         padding: 5px 10px;
-        background-color: #ff00001f;
-        color: white;
+
         border: none;
         border-radius: 4px;
         transition: background-color 0.3s ease;
@@ -38,3 +42,45 @@
   form button:hover {
     background-color: red;
   }
+
+
+  ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-items: center;
+}
+
+ul li {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  width: 250px;
+}
+
+ul li img {
+  display: block;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 10px;
+}
+
+ul li strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+ul li p {
+  margin: 5px 0;
+ 
+}
+
+ul li p:first-of-type {
+  font-weight: bold;
+  color: #007bff;
+}
