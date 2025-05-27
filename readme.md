@@ -10,7 +10,6 @@ Este proyecto es una implementación de un backend completo para una tienda onli
 - Express.js  
 - MongoDB + Mongoose  
 - Handlebars  
-- Bootstrap (para estilos de las vistas)  
 - JavaScript moderno (ES Modules)
 
 ---
