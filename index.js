@@ -1,6 +1,7 @@
 import express from "express";
 import productsRouter from "./src/routes/products.router.js";
 import cartsRouter from "./src/routes/cart.router.js";
+import productDetailRouter from "./src/routes/productDetailRouter.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import viewRouter from "./src/routes/view.router.js";
@@ -44,10 +45,10 @@ app.use(express.static("public")); //para psoder usar archivos estaticos como cs
 
 
 //rutas
-app.use("/api/products", productsRouter); // /api/products
-app.use("/api/carts", cartsRouter); ///api/carts
-app.use("/", viewRouter) // "/" home y "/realtimeproducts" para realtimeproducts
-
+app.use("/api/products", productsRouter); 
+app.use("/api/carts", cartsRouter); 
+app.use("/", viewRouter) 
+app.use("/product", productDetailRouter)
 
 
 app.listen(PORT, () => {

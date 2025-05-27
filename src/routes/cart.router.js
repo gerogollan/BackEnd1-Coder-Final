@@ -94,7 +94,37 @@ router.delete("/:cid", async (req, res) => {
 });
 
 
-  
+  // Sumar cantidad
+router.post("/:cid/product/:pid/increase", async (req, res) => {
+  const { cid, pid } = req.params;
+  try {
+    await cartManager.addProductToCart(cid, pid);
+    res.redirect(`/carts/${cid}`);
+  } catch (error) {
+    res.status(500).send("Error al aumentar cantidad");
+  }
+});
+
+// Restar cantidad
+router.post("/:cid/product/:pid/decrease", async (req, res) => {
+  const { cid, pid } = req.params;
+  try {
+    const cart = await cartManager.getCartById(cid);
+    const productInCart = cart.products.find(p => p.product._id.toString() === pid);
+
+    if (!productInCart) return res.redirect(`/carts/${cid}`);
+
+    if (productInCart.quantity > 1) {
+      await cartManager.updateProductQuantity(cid, pid, productInCart.quantity - 1);
+    } else {
+      await cartManager.removeProductFromCart(cid, pid);
+    }
+
+    res.redirect(`/carts/${cid}`);
+  } catch (error) {
+    res.status(500).send("Error al disminuir cantidad");
+  }
+});
 
 
 
