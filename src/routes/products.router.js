@@ -20,6 +20,7 @@ router.get("/", async (req, res) => {
       nextPage: products.nextPage,
       page: products.page,
     });
+    res.json(products)
   } catch (error) {
     res.status(500).json({ error: "Error al obtener productos" });
   }
