@@ -119,7 +119,8 @@ Vaciar completamente el carrito.
 Muestra todos los productos con paginación, ordenamiento y filtros.
 🔎 ¡Ideal para navegar por el catálogo!
 
-📸
+📸 ![image](https://github.com/user-attachments/assets/44c65a18-38d5-4c39-a3f1-4ee903d1a898)
+
 
 🛍️ /products/:pid - Detalle de producto
 Muestra información completa del producto seleccionado y permite agregarlo al carrito.
